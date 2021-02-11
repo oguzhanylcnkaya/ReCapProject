@@ -10,8 +10,8 @@ namespace Entities.Concrete
         public int Id { get; set; }
         public int BrandId { get; set; }
         public int ColorId { get; set; }
-        public DateTime ModelYear { get; set; }
-        public float DailyPrice { get; set; }
+        public string ModelYear { get; set; }
+        public double DailyPrice { get; set; }
         public string Description { get; set; }
     }
 }

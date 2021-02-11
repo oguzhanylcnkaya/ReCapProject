@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.InMemory
                     ColorId = 1,
                     Description = "Birinci Araba",
                     DailyPrice = 50000,
-                    ModelYear = DateTime.Now
+                    ModelYear = "30/07/2020"
                 },
                 new Car
                 {
@@ -31,7 +31,7 @@ namespace DataAccess.Concrete.InMemory
                     ColorId = 1,
                     Description = "ikinci Araba",
                     DailyPrice = 70000,
-                    ModelYear = DateTime.Now
+                    ModelYear = "30/07/2020"
                 },
                 new Car
                 {
@@ -40,7 +40,7 @@ namespace DataAccess.Concrete.InMemory
                     ColorId = 1,
                     Description = "Üçüncü Araba",
                     DailyPrice = 100000,
-                    ModelYear = DateTime.Now
+                    ModelYear = "30/07/2020"
                 },
                 new Car
                 {
@@ -49,7 +49,7 @@ namespace DataAccess.Concrete.InMemory
                     ColorId = 1,
                     Description = "Dördüncü Araba",
                     DailyPrice = 35350,
-                    ModelYear = DateTime.Now
+                    ModelYear = "30/07/2020"
                 },
                 new Car
                 {
@@ -58,7 +58,7 @@ namespace DataAccess.Concrete.InMemory
                     ColorId = 1,
                     Description = "Beşinci Araba",
                     DailyPrice = 60000,
-                    ModelYear = DateTime.Now
+                    ModelYear = "30/07/2020"
                 }
             };
         }
