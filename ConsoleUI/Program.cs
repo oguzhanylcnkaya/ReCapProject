@@ -11,7 +11,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
      
-            //CarMethod();
+            CarMethod();
 
             //BrandMethod();
 
@@ -21,6 +21,11 @@ namespace ConsoleUI
         private static void CarMethod()
         {
             CarManager carManager = new CarManager(new EfCarDal());
+
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine("Marka: {0}, Renk: {1}, Açıklama: {2}, Fiyat: {3}", car.BrandName, car.ColorName, car.Description, car.DailyPrice);
+            }
 
             /* CAR ADD */
             //try
