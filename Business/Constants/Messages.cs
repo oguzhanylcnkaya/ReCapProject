@@ -27,5 +27,25 @@ namespace Business.Constants
         public static string CarGetDetailsDTO = "Detaylı araba bilgisi getirildi";
         public static string CarGetBrandId = "Seçilen markaya göre arabalar getirildi";
         public static string CarGetColorId = "Seçilen renge göre arabalar getirildi";
+
+        public static string UserAdded = "Kullanıcı eklendi";
+        public static string UserDeleted = "Kullanıcı silindi";
+        public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UserGetAll = "Kullanıcılar getirildi";
+        public static string UserGet = "Kullanıcı getirildi";
+
+        public static string CustomerAdded = "Müşteri eklendi";
+        public static string CustomerDeleted = "Müşteri silindi";
+        public static string CustomerUpdated = "Müşteri güncellendi";
+        public static string CustomerGet = "Müşter getirildii";
+        public static string CustomerGetAll = "Müşteriler getirildi";
+        public static string CustomerGetByUserId = "Müşteri, Kullanıcıya göre getirildi";
+
+        public static string RentalAdded = "Araba kiralama işlemi başarıyla gerçekleşti.";
+        public static string RentalDeleted = "Araba kiralama bilgileri silindi";
+        public static string RentalUpdated = "Araba kiralama bilgileri güncellendi";
+        public static string RentalGetAll = "Araba kiralama bilgileri getirildi";
+        public static string RentalGet = "Araba kiralama bilgileri getirildi";
+        public static string RentalErrorRent = "Araba henüz diğer kullanıcıdan teslim alınmadığı için kiralama işlemi gerçekleşemez.";
     }
 }

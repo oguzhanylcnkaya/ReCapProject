@@ -28,7 +28,272 @@ namespace ConsoleUI
             //ColorUpdate();
             //ColorGet();
             //ColorGetAll();
+
+            //UserAdd();
+            //UserDelete();
+            //UserUpdate();
+            //UserGetAll();
+            //UserGet();
+
+            //CustomerAdd();
+            //CustomerDelete();
+            //CustomerUpdate();
+            //CustomerGetAll();
+            //CustomerGet();
+
+            //RentalAdd();
+            //RentalDelete();
+            //RentalUpdate();
+            //RentalGetAll();
+            //RentalGet();
         }
+
+        private static void RentalAdd()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.Add(new Rental
+            {
+                CarId = 5,
+                CustomerId = 1,
+                RentDate = new DateTime(2021, 2, 10)
+            });
+            Console.WriteLine(result.Message);
+            
+        }
+        private static void RentalDelete()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.Delete(new Rental
+            {
+                Id = 5
+            });
+            Console.WriteLine(result.Message);
+
+        }
+        private static void RentalUpdate()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.Update(new Rental
+            {
+                Id = 7,
+                CarId = 1004,
+                CustomerId = 3,
+                RentDate = new DateTime(2021, 02,10),
+                ReturnDate = DateTime.Today
+                
+            });
+            Console.WriteLine(result.Message);
+
+        }
+        private static void RentalGetAll()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.GetAll();
+            foreach (var rent in result.Data)
+            {
+                Console.WriteLine("Araba Kiralama Tarihi: {0} \n Araba Teslim Tarihi: {1}", rent.RentDate, rent.ReturnDate);
+                Console.WriteLine("---------------------------------");
+            }
+
+        }
+        private static void RentalGet()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.Get(1).Data;
+
+            Console.WriteLine("Araba Kiralama Tarihi: {0} \n Araba Teslim Tarihi: {1}", result.RentDate, result.ReturnDate);
+
+        }
+
+        private static void UserAdd()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            try
+            {
+                userManager.Add(new User
+                {
+                    FirstName = "sdfdsfsd",
+                    LastName = "dsfsdfds",
+                    Email = "dsfsddsfsdfds",
+                    Password = "123456789"
+                });
+
+                Console.WriteLine("Kullanıcı eklendi");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Kullanıcı eklenirken bir hata oluştu");
+            }
+            
+        }
+        private static void UserDelete()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            try
+            {
+                userManager.Delete(new User { Id = 5 });
+
+                Console.WriteLine("Kullanıcı silindi");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Kullanıcı silinirken bir hata oluştu");
+            }
+
+        }
+        private static void UserUpdate()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            try
+            {
+                userManager.Update(new User
+                {
+                    Id = 4,
+                    FirstName = "Engin",
+                    LastName = "Demiroğ",
+                    Email = "sdfsdfdsfdsdsf",
+                    Password = "15484sddfds"
+                });
+
+                Console.WriteLine("Kullanıcı güncellendi");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Kullanıcı güncellenirken bir hata oluştu");
+            }
+
+        }
+        private static void UserGetAll()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            try
+            {
+                foreach (var user in userManager.GetAll().Data)
+                {
+                    Console.WriteLine("Kullanıcı Adı: {0} Kullanıcı Soyadı: {1}", user.FirstName, user.LastName);
+                }
+         
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Kullanıcı güncellenirken bir hata oluştu");
+            }
+
+        }
+        private static void UserGet()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            try
+            {
+                Console.WriteLine("Kullanıcı Adı: {0} Kullanıcı Soyadı: {1}",userManager.Get(1).Data.FirstName, userManager.Get(1).Data.LastName);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Kullanıcı getirilirken bir hata oluştu");
+            }
+
+        }
+
+
+        private static void CustomerAdd()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            try
+            {
+                customerManager.Add(new Customer
+                {
+                    UserId = 2,
+                    CompanyName = "Hello Human Yazılım Şirketi"
+                });                
+
+                Console.WriteLine("Müşteri eklendi");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Müşteri eklenirken bir hata oluştu");
+            }
+
+        }
+        private static void CustomerDelete()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            try
+            {
+                customerManager.Delete(new Customer { Id = 4 });
+
+                Console.WriteLine("Müşteri silindi");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Müşteri silinirken bir hata oluştu");
+            }
+
+        }
+        private static void CustomerUpdate()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            try
+            {
+                customerManager.Update(new Customer
+                {
+                    Id = 1,
+                    UserId = 1,
+                    CompanyName = "Yazılımcı Abinin Yeri"
+                });
+
+                Console.WriteLine("Müşteri güncellendi");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Müşteri güncellenirken bir hata oluştu");
+            }
+
+        }
+        private static void CustomerGetAll()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            try
+            {
+                foreach (var customer in customerManager.GetAll().Data)
+                {
+                    Console.WriteLine("Müşteri Şirket Adı: {0}", customer.CompanyName);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Müşteriler getirilirken bir hata oluştu");
+            }
+
+        }
+        private static void CustomerGet()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+
+            try
+            {
+                Console.WriteLine("Müşteri Şirket Adı: {0}", customerManager.Get(1).Data.CompanyName);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Müşteri getirilirken bir hata oluştu");
+            }
+
+        }
+
 
         private static void CarGetAll()
         {
@@ -48,7 +313,6 @@ namespace ConsoleUI
 
             }
         }
-
         private static void CarUpdate()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -73,7 +337,6 @@ namespace ConsoleUI
                 Console.WriteLine("Araba güncellenmeye çalışırken bir hata oluştu");
             }
         }
-
         private static void CarAdd()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -98,7 +361,6 @@ namespace ConsoleUI
                 Console.WriteLine("Araba oluşturulurken hata oluştu");
             }
         }
-
         private static void CarGetDatilsDTO()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -108,7 +370,6 @@ namespace ConsoleUI
                 Console.WriteLine("Marka: {0}, Renk: {1}, Açıklama: {2}, Fiyat: {3}", car.BrandName, car.ColorName, car.Description, car.DailyPrice);
             }
         }
-
         private static void CarDelete()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -127,7 +388,6 @@ namespace ConsoleUI
                 Console.WriteLine("Araba silinmeye çalışırken bir hata oluştu");
             }
         }
-
         private static void CarGet()
         {
             CarManager carManager = new CarManager(new EfCarDal());
@@ -146,6 +406,7 @@ namespace ConsoleUI
 
         }
 
+
         private static void BrandGet()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
@@ -161,7 +422,6 @@ namespace ConsoleUI
                 Console.WriteLine("Marka getirilmeye çalışırken bir hata oluştu");
             }
         }
-
         private static void BrandAdd()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
@@ -242,6 +502,7 @@ namespace ConsoleUI
             }
         }
 
+
         private static void ColorGet()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
@@ -258,7 +519,6 @@ namespace ConsoleUI
             }
 
         }
-
         private static void ColorAdd()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
