@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +22,15 @@ namespace Business.Concrete
 
         public IResult Add(Brand brand)
         {
+            var context = new ValidationContext<Brand>(brand);
+            BrandValidator brandValidator = new BrandValidator();
+
+            var result = brandValidator.Validate(context);
+            if(!result.IsValid)
+            {
+                throw new ValidationException(result.Errors);
+            }
+
             _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdded);
         }
