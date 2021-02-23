@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -33,20 +35,24 @@ namespace Business.Concrete
             }
                        
         }
+
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
-            var context = new ValidationContext<Rental>(rental);
-            RentalValidator rentalValidator = new RentalValidator();
+            //var context = new ValidationContext<Rental>(rental);
+            //RentalValidator rentalValidator = new RentalValidator();
 
             var result = Rent(rental.CarId);
             if (result.Success)
             {
-                var result2 = rentalValidator.Validate(context);
+                //var result2 = rentalValidator.Validate(context);
 
-                if (!result2.IsValid)
-                {
-                    throw new ValidationException(result2.Errors);
-                }
+                //if (!result2.IsValid)
+                //{
+                //    throw new ValidationException(result2.Errors);
+                //}
+
+                //ValidationTool.Validate(rental, new RentalValidator());
 
                 _rentalDal.Add(rental);
                 return new SuccessResult(Messages.RentalAdded);

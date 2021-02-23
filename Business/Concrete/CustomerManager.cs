@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,16 +22,19 @@ namespace Business.Concrete
             _customerDal = customerDal;
         }
 
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
-            var context = new ValidationContext<Customer>(customer);
-            CustomerValidator customerValidator = new CustomerValidator();
+            //var context = new ValidationContext<Customer>(customer);
+            //CustomerValidator customerValidator = new CustomerValidator();
 
-            var result = customerValidator.Validate(context);
-            if (!result.IsValid)
-            {
-                throw new ValidationException(result.Errors);
-            }
+            //var result = customerValidator.Validate(context);
+            //if (!result.IsValid)
+            //{
+            //    throw new ValidationException(result.Errors);
+            //}
+
+            //ValidationTool.Validate(customer, new CustomerValidator());
 
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);

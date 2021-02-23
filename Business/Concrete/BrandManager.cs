@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,16 +22,19 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
-            var context = new ValidationContext<Brand>(brand);
-            BrandValidator brandValidator = new BrandValidator();
+            //var context = new ValidationContext<Brand>(brand);
+            //BrandValidator brandValidator = new BrandValidator();
 
-            var result = brandValidator.Validate(context);
-            if(!result.IsValid)
-            {
-                throw new ValidationException(result.Errors);
-            }
+            //var result = brandValidator.Validate(context);
+            //if(!result.IsValid)
+            //{
+            //    throw new ValidationException(result.Errors);
+            //}
+
+            //ValidationTool.Validate(brand, new BrandValidator());
 
             _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAdded);

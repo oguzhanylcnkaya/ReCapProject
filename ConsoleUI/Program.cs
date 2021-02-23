@@ -41,7 +41,7 @@ namespace ConsoleUI
             //CustomerGetAll();
             //CustomerGet();
 
-            //RentalAdd();
+            RentalAdd();
             //RentalDelete();
             //RentalUpdate();
             //RentalGetAll();
@@ -54,9 +54,9 @@ namespace ConsoleUI
 
             var result = rentalManager.Add(new Rental
             {
-                CarId = 5,
+                CarId = 1,
                 CustomerId = 1,
-                RentDate = new DateTime(2021, 2, 10)
+                RentDate = new DateTime(2021, 2, 23)
             });
             Console.WriteLine(result.Message);
             
@@ -118,9 +118,37 @@ namespace ConsoleUI
             {
                 userManager.Add(new User
                 {
-                    FirstName = "sdfdsfsd",
-                    LastName = "dsfsdfds",
-                    Email = "dsfsddsfsdfds",
+                    FirstName = "Oğuzhan",
+                    LastName = "Yalçınkaya",
+                    Email = "oguzhanyalcinkayaa@gmail.com",
+                    Password = "123456789"
+                });
+                userManager.Add(new User
+                {
+                    FirstName = "Emin",
+                    LastName = "Meral",
+                    Email = "eminmeral@gmail.com",
+                    Password = "123456789"
+                });
+                userManager.Add(new User
+                {
+                    FirstName = "Ebru",
+                    LastName = "Arslan",
+                    Email = "ebru@gmail.com",
+                    Password = "123456789"
+                });
+                userManager.Add(new User
+                {
+                    FirstName = "Batuhan",
+                    LastName = "Yıldız",
+                    Email = "batu@gmail.com",
+                    Password = "123456789"
+                });
+                userManager.Add(new User
+                {
+                    FirstName = "Candan",
+                    LastName = "Sumaktaş",
+                    Email = "candan@gmail.com",
                     Password = "123456789"
                 });
 
@@ -213,9 +241,29 @@ namespace ConsoleUI
             {
                 customerManager.Add(new Customer
                 {
-                    UserId = 2,
+                    UserId = 1,
                     CompanyName = "Hello Human Yazılım Şirketi"
-                });                
+                });
+                customerManager.Add(new Customer
+                {
+                    UserId = 2,
+                    CompanyName = "Hello World Yazılım Şirketi"
+                });
+                customerManager.Add(new Customer
+                {
+                    UserId = 3,
+                    CompanyName = "Hello Banana Yazılım Şirketi"
+                });
+                customerManager.Add(new Customer
+                {
+                    UserId = 4,
+                    CompanyName = "Hello Creator Yazılım Şirketi"
+                });
+                customerManager.Add(new Customer
+                {
+                    UserId = 5,
+                    CompanyName = "Hello Mars Yazılım Şirketi"
+                });
 
                 Console.WriteLine("Müşteri eklendi");
             }
@@ -348,7 +396,39 @@ namespace ConsoleUI
                 {
                     BrandId = 1,
                     ColorId = 1,
-                    Description = "Çok güzel bir arabadır",
+                    Description = "Audi turuncu araba",
+                    DailyPrice = 420000,
+                    ModelYear = "01/01/2021"
+                });
+                carManager.Add(new Car
+                {
+                    BrandId = 2,
+                    ColorId = 2,
+                    Description = "Siyah Auston Martin, cillop gibi araba",
+                    DailyPrice = 420000,
+                    ModelYear = "01/01/2021"
+                });
+                carManager.Add(new Car
+                {
+                    BrandId = 3,
+                    ColorId = 3,
+                    Description = "Mavi Porche, tam bir asil arabası :D",
+                    DailyPrice = 420000,
+                    ModelYear = "01/01/2021"
+                });
+                carManager.Add(new Car
+                {
+                    BrandId = 4,
+                    ColorId = 4,
+                    Description = "Kırmızı Tofaş, fakir ama gururlu arabası",
+                    DailyPrice = 420000,
+                    ModelYear = "01/01/2021"
+                });
+                carManager.Add(new Car
+                {
+                    BrandId = 5,
+                    ColorId = 5,
+                    Description = "Sarı Tesla, iyi arabadır",
                     DailyPrice = 420000,
                     ModelYear = "01/01/2021"
                 });
@@ -432,6 +512,9 @@ namespace ConsoleUI
                 brandManager.Add(new Brand { Name = "Audi" });
                 brandManager.Add(new Brand { Name = "Aston Martin" });
                 brandManager.Add(new Brand { Name = "Porche" });
+                brandManager.Add(new Brand { Name = "Tofaş" });
+                brandManager.Add(new Brand { Name = "Tesla" });
+                brandManager.Add(new Brand { Name = "Ford" });
 
                 Console.WriteLine("Marka başarıyla veritabanına eklendi");
             }
