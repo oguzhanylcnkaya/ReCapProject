@@ -69,6 +69,27 @@ namespace DataAccess.Migrations
                     b.ToTable("Cars");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.CarImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarImages");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Color", b =>
                 {
                     b.Property<int>("Id")
