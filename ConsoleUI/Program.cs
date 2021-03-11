@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -116,41 +117,41 @@ namespace ConsoleUI
 
             try
             {
-                userManager.Add(new User
-                {
-                    FirstName = "Oğuzhan",
-                    LastName = "Yalçınkaya",
-                    Email = "oguzhanyalcinkayaa@gmail.com",
-                    Password = "123456789"
-                });
-                userManager.Add(new User
-                {
-                    FirstName = "Emin",
-                    LastName = "Meral",
-                    Email = "eminmeral@gmail.com",
-                    Password = "123456789"
-                });
-                userManager.Add(new User
-                {
-                    FirstName = "Ebru",
-                    LastName = "Arslan",
-                    Email = "ebru@gmail.com",
-                    Password = "123456789"
-                });
-                userManager.Add(new User
-                {
-                    FirstName = "Batuhan",
-                    LastName = "Yıldız",
-                    Email = "batu@gmail.com",
-                    Password = "123456789"
-                });
-                userManager.Add(new User
-                {
-                    FirstName = "Candan",
-                    LastName = "Sumaktaş",
-                    Email = "candan@gmail.com",
-                    Password = "123456789"
-                });
+                //userManager.Add(new User
+                //{
+                //    FirstName = "Oğuzhan",
+                //    LastName = "Yalçınkaya",
+                //    Email = "oguzhanyalcinkayaa@gmail.com",
+                //    Password = "123456789"
+                //});
+                //userManager.Add(new User
+                //{
+                //    FirstName = "Emin",
+                //    LastName = "Meral",
+                //    Email = "eminmeral@gmail.com",
+                //    Password = "123456789"
+                //});
+                //userManager.Add(new User
+                //{
+                //    FirstName = "Ebru",
+                //    LastName = "Arslan",
+                //    Email = "ebru@gmail.com",
+                //    Password = "123456789"
+                //});
+                //userManager.Add(new User
+                //{
+                //    FirstName = "Batuhan",
+                //    LastName = "Yıldız",
+                //    Email = "batu@gmail.com",
+                //    Password = "123456789"
+                //});
+                //userManager.Add(new User
+                //{
+                //    FirstName = "Candan",
+                //    LastName = "Sumaktaş",
+                //    Email = "candan@gmail.com",
+                //    Password = "123456789"
+                //});
 
                 Console.WriteLine("Kullanıcı eklendi");
             }
@@ -182,14 +183,14 @@ namespace ConsoleUI
 
             try
             {
-                userManager.Update(new User
-                {
-                    Id = 4,
-                    FirstName = "Engin",
-                    LastName = "Demiroğ",
-                    Email = "sdfsdfdsfdsdsf",
-                    Password = "15484sddfds"
-                });
+                //userManager.Update(new User
+                //{
+                //    Id = 4,
+                //    FirstName = "Engin",
+                //    LastName = "Demiroğ",
+                //    Email = "sdfsdfdsfdsdsf",
+                //    Password = "15484sddfds"
+                //});
 
                 Console.WriteLine("Kullanıcı güncellendi");
             }

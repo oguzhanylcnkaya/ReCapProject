@@ -3,6 +3,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,17 +26,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
-            //var context = new ValidationContext<User>(user);
-            //UserValidator userValidator = new UserValidator();
-
-            //var result = userValidator.Validate(context);
-            //if (!result.IsValid)
-            //{
-            //    throw new ValidationException(result.Errors);
-            //}
-
-            //ValidationTool.Validate(user, new UserValidator());
-
             _userDal.Add(user);
             return new SuccessResult(Messages.UserAdded);
         }
@@ -54,6 +44,16 @@ namespace Business.Concrete
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserGetAll);
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.GetById(u => u.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
         }
 
         public IResult Update(User user)

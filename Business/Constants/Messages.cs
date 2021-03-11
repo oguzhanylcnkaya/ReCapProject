@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -47,5 +48,6 @@ namespace Business.Constants
         public static string RentalGetAll = "Araba kiralama bilgileri getirildi";
         public static string RentalGet = "Araba kiralama bilgileri getirildi";
         public static string RentalErrorRent = "Araba henüz diğer kullanıcıdan teslim alınmadığı için kiralama işlemi gerçekleşemez.";
+        public static string AuthorizationDenied = "Yetkiniz yok";
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,13 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Brand> Brands { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,13 +42,6 @@ namespace DataAccess.Concrete.EntityFramework
             modelBuilder.Entity<Color>().ToTable("Colors");
             modelBuilder.Entity<Color>().Property(c => c.Id).HasColumnName("Id");
             modelBuilder.Entity<Color>().Property(c => c.Name).HasColumnName("Name");
-
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<User>().Property(u => u.Id).HasColumnName("Id");
-            modelBuilder.Entity<User>().Property(u => u.FirstName).HasColumnName("FirstName");
-            modelBuilder.Entity<User>().Property(u => u.LastName).HasColumnName("LastName");
-            modelBuilder.Entity<User>().Property(u => u.Email).HasColumnName("Email");
-            modelBuilder.Entity<User>().Property(u => u.Password).HasColumnName("Password");
 
             modelBuilder.Entity<Customer>().ToTable("Customers");
             modelBuilder.Entity<Customer>().Property(c => c.Id).HasColumnName("Id");
