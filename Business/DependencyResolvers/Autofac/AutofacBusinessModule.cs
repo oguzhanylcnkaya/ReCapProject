@@ -42,8 +42,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
-            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
-
             //Aspect olarak çalışması için
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
