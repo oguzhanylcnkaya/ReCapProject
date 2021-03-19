@@ -30,6 +30,7 @@ namespace DataAccess.Concrete.EntityFramework
                                Description = c.Description,
                                ModelYear = c.ModelYear,
                                BrandId = b.Id,
+                               CarName = c.CarName,
                                ColorId = co.Id,
                                ImagePath = context.CarImages.Where(x => x.CarId == c.Id).FirstOrDefault().ImagePath
                            };

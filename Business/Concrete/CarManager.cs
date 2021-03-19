@@ -29,17 +29,6 @@ namespace Business.Concrete
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
-            //var context = new ValidationContext<Car>(car);
-            //CarValidator carValidator = new CarValidator();
-            //var result = carValidator.Validate(context);
-
-            //if (!result.IsValid)
-            //{
-            //    throw new ValidationException(result.Errors);
-            //}
-
-            //ValidationTool.Validate(new CarValidator(), car);
-
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
      
@@ -72,14 +61,24 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(x => x.Id == carId), Messages.CarGetDetailsDTO);
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        //public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        //{
+        //    return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId), Messages.CarGetBrandId);
+        //}
+
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId), Messages.CarGetBrandId);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(b => b.BrandId == brandId), Messages.CarGetBrandId);
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
+        //public IDataResult<List<Car>> GetCarsByColorId(int colorId)
+        //{
+        //    return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), Messages.CarGetColorId);
+        //}
+
+        public IDataResult<List<CarDetailDto>> GetCarsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), Messages.CarGetColorId);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorId == colorId), Messages.CarGetColorId);
         }
 
         [CacheRemoveAspect("ICarService.Get")]
