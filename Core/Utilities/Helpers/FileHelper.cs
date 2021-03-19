@@ -19,13 +19,15 @@ namespace Core.Utilities.Helpers
                     file.CopyTo(stream);
                 }
             }
-            var result = NewPath(file);
-            File.Move(sourcePath, result);
-            return result;
+            var result = newPath(file);
+            File.Move(sourcePath, result.newPath);
+            return result.Path2.Replace("\\", "/");
         }
 
         public static IResult Delete(string path)
         {
+            path = path.Replace("/", "\\");
+
             try
             {
                 File.Delete(path);
@@ -40,29 +42,30 @@ namespace Core.Utilities.Helpers
 
         public static string Update(string sourcePath, IFormFile file)
         {
-            var result = NewPath(file);
+            var result = newPath(file);
             if(sourcePath.Length > 0)
             {
-                using (var stream = new FileStream(sourcePath, FileMode.Create))
+                using (var stream = new FileStream(result.newPath, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
             }
 
             File.Delete(sourcePath);
-            return result;
+            return result.Path2.Replace("\\", "/");
         }
 
-        public static string NewPath(IFormFile formFile)
+        public static (string newPath, string Path2) newPath(IFormFile file)
         {
-            FileInfo fileInfo = new FileInfo(formFile.FileName);
-            string fileExtension = fileInfo.Extension;
+            FileInfo ff = new FileInfo(file.FileName);
+            string fileExtension = ff.Extension;
 
-            string path = Environment.CurrentDirectory + @"\Images\CarsPhoto";
-            var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "-" + DateTime.Now.Day + "_" + fileExtension;
+            string path = Environment.CurrentDirectory + @"\wwwroot\images";
+            var newPath = Guid.NewGuid().ToString() + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + "_" + DateTime.Now.Year + fileExtension;
+            //string webPath = string.Format("/Images/{0}",newPath);
 
             string result = $@"{path}\{newPath}";
-            return result;
+            return (result, $"{newPath}");
         }
     }
 }

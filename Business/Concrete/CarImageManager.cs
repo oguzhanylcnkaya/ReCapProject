@@ -6,6 +6,7 @@ using Core.Utilities.Helpers;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Business.Concrete
             _carImageDal = carImageDal;
         }
 
-        [ValidationAspect(typeof(CarImageValidator))]
+        //[ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile formFile, CarImage carImage)
         {
             var result = BusinessRules.Run(CheckInsertLimit(carImage.CarId));
@@ -82,7 +83,7 @@ namespace Business.Concrete
 
         private List<CarImage> CheckIfPicture(int carId)
         {
-            var path = @"\Images\CarsPhoto\oguzhanyalcinkaya.jpg";
+            var path = @"default.jpg";
             var result = _carImageDal.GetAll(c => c.CarId == carId).Any();
 
             if (!result)
@@ -101,6 +102,9 @@ namespace Business.Concrete
             return _carImageDal.GetAll(c => c.CarId == carId);
         }
 
-        
+        //public IDataResult<List<CarDetailDto>> GetCarImageByCarId(int carId)
+        //{
+        //    return new SuccessDataResult<List<CarDetailDto>>(_carImageDal.GetCarDetails(c => c.Id == carId));
+        //}
     }
 }
