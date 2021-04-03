@@ -49,5 +49,8 @@ namespace Business.Constants
         public static string RentalGet = "Araba kiralama bilgileri getirildi";
         public static string RentalErrorRent = "Araba henüz diğer kullanıcıdan teslim alınmadığı için kiralama işlemi gerçekleşemez.";
         public static string AuthorizationDenied = "Yetkiniz yok";
+        public static string GetCustomerDetail = "Müşteri detayları getirildi";
+        public static string CardAdded = "Card eklendi";
+        public static string PaymentAdded = "Ödeme tamamlandı";
     }
 }

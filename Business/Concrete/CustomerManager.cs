@@ -6,6 +6,7 @@ using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -25,17 +26,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
-            //var context = new ValidationContext<Customer>(customer);
-            //CustomerValidator customerValidator = new CustomerValidator();
-
-            //var result = customerValidator.Validate(context);
-            //if (!result.IsValid)
-            //{
-            //    throw new ValidationException(result.Errors);
-            //}
-
-            //ValidationTool.Validate(customer, new CustomerValidator());
-
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);
         }
@@ -59,6 +49,16 @@ namespace Business.Concrete
         public IDataResult<Customer> GetByUserId(int userId)
         {
             return new SuccessDataResult<Customer>(_customerDal.GetById(c => c.UserId == userId), Messages.CustomerGetByUserId);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetail()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetail(), Messages.GetCustomerDetail);
+        }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetailById(int id)
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetail(x => x.CustomerId == id));
         }
 
         public IResult Update(Customer customer)
