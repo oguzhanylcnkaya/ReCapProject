@@ -18,5 +18,6 @@ namespace Entities.DTOs
         public string CarName { get; set; }
 
         public string ModelYear { get; set; }
+        public int CarFindexPoint { get; set; }
     }
 }

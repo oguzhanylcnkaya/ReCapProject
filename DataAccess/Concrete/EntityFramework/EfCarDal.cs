@@ -32,7 +32,8 @@ namespace DataAccess.Concrete.EntityFramework
                                BrandId = b.Id,
                                CarName = c.CarName,
                                ColorId = co.Id,
-                               ImagePath = context.CarImages.Where(x => x.CarId == c.Id).FirstOrDefault().ImagePath
+                               ImagePath = context.CarImages.Where(x => x.CarId == c.Id).FirstOrDefault().ImagePath,
+                               CarFindexPoint = c.CarFindexPoint
                            };
                 return result.ToList();
             }

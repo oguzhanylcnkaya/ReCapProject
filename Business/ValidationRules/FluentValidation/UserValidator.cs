@@ -13,6 +13,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(u => u.Email).NotEmpty();
             RuleFor(u => u.PasswordHash).NotEmpty();
+            RuleFor(u => u.FirstName).MinimumLength(3);
         }
     }
 }

@@ -52,5 +52,10 @@ namespace Business.Constants
         public static string GetCustomerDetail = "Müşteri detayları getirildi";
         public static string CardAdded = "Card eklendi";
         public static string PaymentAdded = "Ödeme tamamlandı";
+        internal static string CardDeleted;
+        internal static string CardGetAll;
+        internal static string CardUpdated;
+
+        public static object GetByCardId { get; internal set; }
     }
 }

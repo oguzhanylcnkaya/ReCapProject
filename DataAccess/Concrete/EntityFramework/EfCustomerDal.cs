@@ -28,7 +28,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  FirstName = u.Email,
                                  LastName = u.LastName,
                                  Status = u.Status,
-                                 FullName = $"{u.FirstName} {u.LastName}"
+                                 FullName = $"{u.FirstName} {u.LastName}",
+                                 CustomerFindexPoint = c.CustomerFindexPoint
                              };
                 return result.ToList();
             }
