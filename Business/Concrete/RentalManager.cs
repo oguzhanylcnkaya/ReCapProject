@@ -100,5 +100,12 @@ namespace Business.Concrete
             }
             return true;
         }
+
+        public IDataResult<List<Rental>> GetRentalByCarId(int carId)
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == carId));
+        }
+
+        
     }
 }
